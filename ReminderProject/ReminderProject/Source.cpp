@@ -34,7 +34,7 @@ int main()
     }
     else
     {
-
+        std::cout << "Testing Window False" << "\n";
     }
 
 	return 0;
