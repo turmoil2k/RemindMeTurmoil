@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+# Build folders
+build/
+
+# Cache/IDE folders
+.cache/
+.vscode/
+
+# SFML
+SFML-2.5.1-C++/
