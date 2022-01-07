@@ -76,6 +76,10 @@ int main()
                         }
                         break;
 
+                    case sf::Event::Resized:
+                            std::cout << "Window being resized???" << std::endl;
+                            break;
+
                         // we don't process other types of events
                     default:
                         break;
