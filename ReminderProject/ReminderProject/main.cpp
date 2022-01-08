@@ -77,7 +77,11 @@ int main()
                         break;
 
                     case sf::Event::Resized:
+                        //Resizing window
                             std::cout << "Window being resized???" << std::endl;
+                            sprite.setScale(
+                                sprite.getLocalBounds().width / window.getSize().x,
+                                sprite.getLocalBounds().height / window.getSize().y);
                             break;
 
                         // we don't process other types of events
