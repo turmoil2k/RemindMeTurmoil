@@ -15,6 +15,12 @@ int main()
     sf::CircleShape shapeB(20.f);
     shapeB.setPosition(40, 0);
     shapeB.setFillColor(sf::Color::Blue);
+    
+    sf::Vector2f size(100, 100);
+
+    sf::RectangleShape rect(size);
+    rect.setPosition(50, 50);
+    rect.setFillColor(sf::Color::Green);
 
     sf::Font openSansFont;
     if (!openSansFont.loadFromFile("all/opensans.ttf"))
@@ -79,6 +85,7 @@ int main()
                     case sf::Event::Resized:
                         //Resizing window
                             std::cout << "Window being resized???" << std::endl;
+                            //non moving background image staying at max size
                             sprite.setScale(
                                 sprite.getLocalBounds().width / window.getSize().x,
                                 sprite.getLocalBounds().height / window.getSize().y);
@@ -97,6 +104,7 @@ int main()
             window.draw(shapeR);
             window.draw(shapeG);
             window.draw(shapeB);
+            window.draw(rect);
             window.display();
         }
     }
