@@ -85,6 +85,7 @@ int main()
     timeRect.setPosition(windowWidth - 100, windowHeight/2.25);
     timeRect.setFillColor(sf::Color::White);
 
+    sf::Vector2i mousePos(0,0);
     bool testWindow = true;
     if (testWindow)
     {
@@ -95,7 +96,7 @@ int main()
             //EVENTS ARE VERY IMPORTANT TAKE THE TIME TO UNDERSTAND ALL OF THEM
             time_t result = time(NULL);
             ctime_s(str, sizeof str, &result);
-            printf("%s", str);
+            //printf("%s", str);
             timeStr = str;
             timeText.setString(timeStr.substr(11,8));
 
@@ -132,6 +133,16 @@ int main()
                                 sprite.getLocalBounds().width / window.getSize().x,
                                 sprite.getLocalBounds().height / window.getSize().y);
                          break;
+                    case sf::Event::MouseButtonPressed:
+                        std::cout << "Mouse clicked!" << "\n";
+                        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+                        {
+                            std::cout << "Mouse Left Click!" << "\n";
+                        }
+                        // get global mouse position
+                        mousePos = sf::Mouse::getPosition(window);
+                        std::cout << "Mouse Position is X/Y" << mousePos.x << " " << mousePos.y << "\n";
+                        break;
 
                         // we don't process other types of events
                     default:
