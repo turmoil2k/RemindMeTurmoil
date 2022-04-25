@@ -4,7 +4,9 @@
 int main()
 {
     //Start Game Engine Object
-    Game game;
+    Game game(1920,1080);
+    //Default Constructor (auto 800x600)
+    //Game game;
 
     bool testWindow = true;
     if (testWindow)
