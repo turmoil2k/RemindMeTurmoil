@@ -3,6 +3,8 @@
 #include <time.h>
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <string>
+
 
 int main()
 {
@@ -19,12 +21,9 @@ int main()
     sf::CircleShape shapeB(20.f);
     shapeB.setPosition(40, 0);
     shapeB.setFillColor(sf::Color::Blue);
-    
-    sf::Vector2f size(25, 25);
+    sf::CircleShape shapeW(20.f);
+    shapeW.setFillColor(sf::Color::White);
 
-    sf::RectangleShape rect(size);
-    rect.setPosition(50, 50);
-    rect.setFillColor(sf::Color::White);
 
     sf::Vector2f rectBarSize(windowWidth/6, windowHeight);
     sf::RectangleShape rectBar(rectBarSize);
@@ -69,14 +68,22 @@ int main()
     time_t result = time(NULL);
     char str[50];
     ctime_s(str, sizeof str, &result);
-    //strftime(str, sizeof str, "%r", &start);
     printf("%s", str);
-    
-    /*put in update for time
-        result = time(NULL);
-        ctime_s(str, sizeof str, &result);
-        printf("%s", str);
-    */
+    std::string timeStr = str;
+
+    sf::Text timet("Welcome to Turmoil's Reminder", openSansFont, 75);
+    timet.setPosition(windowWidth / 3.5f, 10);
+
+    sf::Text timeText;
+    timeText.setFont(openSansFont);
+    timeText.setCharacterSize(200);
+    timeText.setPosition(windowWidth / 2, windowHeight / 3);
+    shapeW.setPosition(windowWidth / 2, windowHeight / 3);
+
+    sf::Vector2f timeRectSize(25, 25);
+    sf::RectangleShape timeRect(timeRectSize);
+    timeRect.setPosition(windowWidth - 100, windowHeight/2.25);
+    timeRect.setFillColor(sf::Color::White);
 
     bool testWindow = true;
     if (testWindow)
@@ -86,6 +93,11 @@ int main()
             sf::Event event;
             //https://www.sfml-dev.org/tutorials/2.5/window-events.php
             //EVENTS ARE VERY IMPORTANT TAKE THE TIME TO UNDERSTAND ALL OF THEM
+            time_t result = time(NULL);
+            ctime_s(str, sizeof str, &result);
+            printf("%s", str);
+            timeStr = str;
+            timeText.setString(timeStr.substr(11,8));
 
             while (window.pollEvent(event))
             {
@@ -131,10 +143,12 @@ int main()
             window.clear();
             window.draw(sprite);
             window.draw(titleText);
+            window.draw(timeText);
             window.draw(shapeR);
             window.draw(shapeG);
             window.draw(shapeB);
-            window.draw(rect);
+            window.draw(shapeW);
+            window.draw(timeRect);
             window.draw(rectBar);
             window.display();
         }
