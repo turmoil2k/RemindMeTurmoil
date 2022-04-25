@@ -45,12 +45,12 @@ private:
 
 	//Private Functions!
 	void InitVariables();
-	void InitWindow(int x, int y);
+	void InitWindow(int initWidth, int initHeight, int fpsLimit);
 
 
 public:
 	//Constructors
-	Game(int windowWidth, int windowHeight);
+	Game(int windowWidth, int windowHeight, int fpsLimit);
 	Game();
 	//Destructors
 	virtual ~Game();

@@ -73,25 +73,25 @@ void Game::InitVariables()
     timeRect.setFillColor(sf::Color::White);
 }
 
-void Game::InitWindow(int x, int y)
+void Game::InitWindow(int initWidth, int initHeight,int fpsLimit)
 {
-    this->videoMode.width = x;
-    this->videoMode.height = y;
+    this->videoMode.width = initWidth;
+    this->videoMode.height = initHeight;
     this->window = new sf::RenderWindow(this->videoMode, "window.viroos.hhh.ez");
-
+    this->window->setFramerateLimit(fpsLimit);
 }
 
 //Constructors / Destructors
 
-Game::Game(int windowWidth, int windowHeight)
+Game::Game(int windowWidth, int windowHeight, int fpsLimit)
 {
-	this->InitWindow(windowWidth,windowHeight);
+    this->InitWindow(windowWidth, windowHeight, fpsLimit);
 	this->InitVariables();
 }
 
 Game::Game()
 {
-	this->InitWindow(800,600);
+	this->InitWindow(800,600,60);
 	this->InitVariables();
 }
 
