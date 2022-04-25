@@ -1,13 +1,109 @@
-#include <iostream>
-#include <chrono>
-#include <ctime>
-#include <time.h>
-#include <SFML/Graphics.hpp>
-#include <string>
+#include "Game.h"
 
 
 int main()
 {
+    //Start Game Engine Object
+    Game game;
+
+    bool testWindow = true;
+    if (testWindow)
+    {
+        while (game.GetWindowIsOpen())
+        {
+            //Update
+            game.Update();
+            //Render
+            game.Render();
+        }
+    }
+    else
+    {
+        std::cout << "Testing Window False" << "\n";
+    }
+
+	return 0;
+}
+
+/*
+
+
+
+            sf::Event event;
+            //https://www.sfml-dev.org/tutorials/2.5/window-events.php
+            //EVENTS ARE VERY IMPORTANT TAKE THE TIME TO UNDERSTAND ALL OF THEM
+            time_t result = time(NULL);
+            ctime_s(str, sizeof str, &result);
+            //printf("%s", str);
+            timeStr = str;
+            timeText.setString(timeStr.substr(11,8));
+
+            while (window.pollEvent(event))
+            {
+                // check the type of the event...
+                switch (event.type)
+                {
+                        // window closed
+                    case sf::Event::Closed:
+                        std::cout << "trying to close" << std::endl;
+                        window.close();
+                        break;
+
+                        // key pressed
+                    case sf::Event::KeyPressed:
+                        if (event.key.code == sf::Keyboard::Escape)
+                        {
+                            std::cout << "pressed esc";
+                            window.close();
+                        }
+
+                        if (event.key.code == sf::Keyboard::Space)
+                        {
+                            std::cout << "Testing space" << "\n";
+                        }
+                        break;
+
+                    case sf::Event::Resized:
+                        //Resizing window
+                            std::cout << "Window being resized???" << std::endl;
+                            //non moving background image staying at max size
+                            sprite.setScale(
+                                sprite.getLocalBounds().width / window.getSize().x,
+                                sprite.getLocalBounds().height / window.getSize().y);
+                         break;
+                    case sf::Event::MouseButtonPressed:
+                        std::cout << "Mouse clicked!" << "\n";
+                        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+                        {
+                            std::cout << "Mouse Left Click!" << "\n";
+                        }
+                        // get global mouse position
+                        mousePos = sf::Mouse::getPosition(window);
+                        std::cout << "Mouse Position is X/Y" << mousePos.x << " " << mousePos.y << "\n";
+                        break;
+
+                        // we don't process other types of events
+                    default:
+                        break;
+                }
+            }
+
+
+            window.clear();
+            window.draw(sprite);
+            window.draw(titleText);
+            window.draw(timeText);
+            window.draw(shapeR);
+            window.draw(shapeG);
+            window.draw(shapeB);
+            window.draw(shapeW);
+            window.draw(timeRect);
+            window.draw(rectBar);
+            window.display();
+
+*/
+
+/*
     int windowWidth = 1920;
     int windowHeight = 1080;
 
@@ -86,88 +182,5 @@ int main()
     timeRect.setFillColor(sf::Color::White);
 
     sf::Vector2i mousePos(0,0);
-    bool testWindow = true;
-    if (testWindow)
-    {
-        while (window.isOpen())
-        {
-            sf::Event event;
-            //https://www.sfml-dev.org/tutorials/2.5/window-events.php
-            //EVENTS ARE VERY IMPORTANT TAKE THE TIME TO UNDERSTAND ALL OF THEM
-            time_t result = time(NULL);
-            ctime_s(str, sizeof str, &result);
-            //printf("%s", str);
-            timeStr = str;
-            timeText.setString(timeStr.substr(11,8));
 
-            while (window.pollEvent(event))
-            {
-                // check the type of the event...
-                switch (event.type)
-                {
-                        // window closed
-                    case sf::Event::Closed:
-                        std::cout << "trying to close" << std::endl;
-                        window.close();
-                        break;
-
-                        // key pressed
-                    case sf::Event::KeyPressed:
-                        if (event.key.code == sf::Keyboard::Escape)
-                        {
-                            std::cout << "pressed esc";
-                            window.close();
-                        }
-
-                        if (event.key.code == sf::Keyboard::Space)
-                        {
-                            std::cout << "Testing space" << "\n";
-                        }
-                        break;
-
-                    case sf::Event::Resized:
-                        //Resizing window
-                            std::cout << "Window being resized???" << std::endl;
-                            //non moving background image staying at max size
-                            sprite.setScale(
-                                sprite.getLocalBounds().width / window.getSize().x,
-                                sprite.getLocalBounds().height / window.getSize().y);
-                         break;
-                    case sf::Event::MouseButtonPressed:
-                        std::cout << "Mouse clicked!" << "\n";
-                        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-                        {
-                            std::cout << "Mouse Left Click!" << "\n";
-                        }
-                        // get global mouse position
-                        mousePos = sf::Mouse::getPosition(window);
-                        std::cout << "Mouse Position is X/Y" << mousePos.x << " " << mousePos.y << "\n";
-                        break;
-
-                        // we don't process other types of events
-                    default:
-                        break;
-                }
-            }
-          
-
-            window.clear();
-            window.draw(sprite);
-            window.draw(titleText);
-            window.draw(timeText);
-            window.draw(shapeR);
-            window.draw(shapeG);
-            window.draw(shapeB);
-            window.draw(shapeW);
-            window.draw(timeRect);
-            window.draw(rectBar);
-            window.display();
-        }
-    }
-    else
-    {
-        std::cout << "Testing Window False" << "\n";
-    }
-
-	return 0;
-}
+*/
