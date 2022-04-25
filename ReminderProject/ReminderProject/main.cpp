@@ -1,7 +1,7 @@
+#include <iostream>
 #include <chrono>
 #include <ctime>
 #include <time.h>
-#include <iostream>
 #include <SFML/Graphics.hpp>
 #include <string>
 
