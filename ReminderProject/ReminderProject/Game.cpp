@@ -3,9 +3,6 @@
 //Private Functions!
 void Game::InitVariables()
 {
-    int windowWidth = 1920;
-    int windowHeight = 1080;
-
     shapeR.setRadius(20.f);
     shapeR.setFillColor(sf::Color::Red);
     shapeG.setRadius(20.f);
@@ -17,10 +14,10 @@ void Game::InitVariables()
     shapeW.setRadius(20.f);
     shapeW.setFillColor(sf::Color::White);
 
-    rectBarSize.x = windowWidth / 6;
-    rectBarSize.y = windowHeight;
+    rectBarSize.x = videoMode.width / 6;
+    rectBarSize.y = videoMode.height;
     rectBar.setSize(rectBarSize);
-    rectBar.setPosition(windowWidth / 12, 0);
+    rectBar.setPosition(videoMode.width / 12, 0);
     sf::Color rectBarCol(50, 50, 50, 200);
     rectBar.setFillColor(rectBarCol);
 
@@ -38,7 +35,7 @@ void Game::InitVariables()
     titleText.setString("Welcome to Turmoil's Reminder");
     titleText.setFont(openSansFont);
     titleText.setCharacterSize(75);
-    titleText.setPosition(windowWidth / 3.5f, 10);
+    titleText.setPosition(videoMode.width / 3.5f, 10);
 
     if (!backgroundTexture.loadFromFile("all/bg.jpg"))
     {
@@ -52,8 +49,8 @@ void Game::InitVariables()
 
     sprite.setTexture(backgroundTexture);
 
-    spriteTargetSize.x = windowWidth;
-    spriteTargetSize.y = windowHeight;
+    spriteTargetSize.x = videoMode.width;
+    spriteTargetSize.y = videoMode.height;
 
     sprite.setScale(
         spriteTargetSize.x / sprite.getLocalBounds().width,
@@ -62,14 +59,14 @@ void Game::InitVariables()
     
     timeText.setFont(openSansFont);
     timeText.setCharacterSize(200);
-    timeText.setPosition(windowWidth / 2, windowHeight / 3);
-    shapeW.setPosition(windowWidth / 2, windowHeight / 3);
+    timeText.setPosition(videoMode.width / 2, videoMode.height / 3);
+    shapeW.setPosition(videoMode.width / 2, videoMode.height / 3);
 
 
     timeRectSize.x = 25;
     timeRectSize.y = 25;
     timeRect.setSize(timeRectSize);
-    timeRect.setPosition(windowWidth - 100, windowHeight / 2.25);
+    timeRect.setPosition(videoMode.width - 100, videoMode.height / 2.25);
     timeRect.setFillColor(sf::Color::White);
 }
 
