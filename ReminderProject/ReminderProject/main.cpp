@@ -11,7 +11,7 @@ int main()
     //Default Constructor (auto 800x600)
     //Game game;
 
-    bool testWindow = false;
+    bool testWindow = true;
     if (testWindow)
     {
         while (game.GetWindowIsOpen())

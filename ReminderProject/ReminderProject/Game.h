@@ -34,14 +34,17 @@ private:
 	sf::Font openSansFont;
 	sf::Text titleText;
 
-	sf::Vector2f timeRectSize;
+	sf::CircleShape timeCircle;
 	sf::RectangleShape timeRect;
+
 
 	sf::Vector2i mousePos;
 
 	char str[50];
 	sf::Text timeText;
 	std::string timeStr;
+
+
 
 	//Private Functions!
 	void InitVariables();

@@ -62,12 +62,15 @@ void Game::InitVariables()
     timeText.setPosition(videoMode.width / 2, videoMode.height / 3);
     shapeW.setPosition(videoMode.width / 2, videoMode.height / 3);
 
+    timeCircle.setRadius(25);
+    timeCircle.setPosition((videoMode.width - 100) - 12.5f, (videoMode.height / 2.25) - 12.5f);
+    timeCircle.setFillColor(sf::Color::Blue);
 
-    timeRectSize.x = 25;
-    timeRectSize.y = 25;
-    timeRect.setSize(timeRectSize);
-    timeRect.setPosition(videoMode.width - 100, videoMode.height / 2.25);
-    timeRect.setFillColor(sf::Color::White);
+    timeRect.setSize(sf::Vector2f(25, 25));
+    timeRect.setPosition((videoMode.width - 100), (videoMode.height / 2.25));
+    timeRect.setFillColor(sf::Color::Cyan);
+
+    
 }
 
 void Game::InitWindow(int initWidth, int initHeight,int fpsLimit)
@@ -182,6 +185,7 @@ void Game::Render()
     this->window->draw(shapeB);
     this->window->draw(shapeW);
 
+    this->window->draw(timeCircle);
     this->window->draw(timeRect);
     this->window->draw(rectBar);
 
