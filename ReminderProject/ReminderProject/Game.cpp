@@ -70,7 +70,9 @@ void Game::InitVariables()
     timeRect.setPosition((videoMode.width - 100), (videoMode.height / 2.25));
     timeRect.setFillColor(sf::Color::Cyan);
 
-    timeButtonTest = new Button((videoMode.width - 100), (videoMode.height / 2.25) + 50, 25, 25, sf::Color(50,50,50,100),sf::Color(150,150,150,200), sf::Color(50, 255, 50, 255));
+    //timeButtonTest = new Button((videoMode.width - 100), (videoMode.height / 2.25) + 50, 25, 25, sf::Color(50,50,50,100),sf::Color(150,150,150,200), sf::Color(50, 255, 50, 255));
+    timeButtonTest = new Button((600), (200), 100, 50, sf::Color(50, 50, 50, 100), sf::Color(150, 150, 150, 200), sf::Color(50, 255, 50, 255));
+    buttonTestString = "24H";
 }
 
 void Game::InitWindow(int initWidth, int initHeight,int fpsLimit)
@@ -78,6 +80,9 @@ void Game::InitWindow(int initWidth, int initHeight,int fpsLimit)
     this->videoMode.width = initWidth;
     this->videoMode.height = initHeight;
     this->window = new sf::RenderWindow(this->videoMode, "window.viroos.hhh.ez");
+    this->view.setCenter(sf::Vector2f(initWidth/2, initHeight/2));
+    this->view.setSize(sf::Vector2f(initWidth,initHeight));
+    this->window->setView(this->view);
     this->window->setFramerateLimit(fpsLimit);
 }
 
@@ -144,6 +149,11 @@ void Game::PollEvents()
             sprite.setScale(
                 sprite.getLocalBounds().width / this->window->getSize().x,
                 sprite.getLocalBounds().height / this->window->getSize().y);
+
+            this->view.setCenter(sf::Vector2f(window->getSize().x/2, window->getSize().y/2));
+            this->view.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
+
+            std::cout << window->getSize().x << " " << window->getSize().y << "\n";
             break;
 
 
@@ -206,5 +216,15 @@ void Game::UpdateTime()
     timeText.setString(timeStr.substr(11, 8));
     //std::cout << timeStr.substr(11, 8) << "\n";
 
-    this->timeButtonTest->UpdateButton((sf::Vector2f)sf::Mouse::getPosition(*this->window));
+    //this->timeButtonTest->UpdateButton((sf::Vector2f)sf::Mouse::getPosition(*this->window));
+    this->timeButtonTest->UpdateButton(window->mapPixelToCoords(sf::Mouse::getPosition(*this->window)));
+
+    if (timeButtonTest->isButtonPressed())
+    {
+        buttonTestString = "12H";
+    }
+    else
+    {
+        buttonTestString = "24H";
+    }
 }

@@ -19,6 +19,7 @@ private:
 	sf::RenderWindow* window = nullptr;
 	sf::VideoMode videoMode;
 	sf::Event sfmlEvent;
+	sf::View view;
 
 	//Private Objects!
 	//(CREATE OBJECTS HERE & SET THEM IN INIT VARS)
@@ -41,7 +42,7 @@ private:
 	sf::RectangleShape timeRect;
 
 	Button* timeButtonTest;
-
+	std::string buttonTestString;
 
 	sf::Vector2i mousePos;
 

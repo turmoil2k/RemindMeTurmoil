@@ -16,7 +16,7 @@ Button::Button(float x, float y, float width, float height, sf::Color incNormalC
 
 Button::~Button()
 {
-
+	
 }
 
 //Accessors
