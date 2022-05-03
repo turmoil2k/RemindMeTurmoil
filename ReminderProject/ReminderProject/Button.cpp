@@ -34,6 +34,7 @@ const bool Button::isButtonPressed() const
 	}
 }
 
+
 bool Button::Toggling()
 {
 	return extraToggle = !extraToggle;

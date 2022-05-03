@@ -218,6 +218,9 @@ void Game::UpdateTime()
     timeText.setString(timeStr.substr(11, 8));
     //std::cout << timeStr.substr(11, 8) << "\n";
 
+
+    //Updating UI Buttons!
+
     //this->timeButtonTest->UpdateButton((sf::Vector2f)sf::Mouse::getPosition(*this->window));
 
     this->timeButtonTest->UpdateButton(window->mapPixelToCoords(sf::Mouse::getPosition(*this->window)));
