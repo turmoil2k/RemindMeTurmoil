@@ -182,6 +182,7 @@ void Game::PollEvents()
 //IMPLEMENTING FUNCTIONS FROM GAME.H
 void Game::Update()
 {
+    this->UpdateButtons();
     this->UpdateTime();
 	this->PollEvents();
 }
@@ -217,8 +218,10 @@ void Game::UpdateTime()
     timeStr = str;
     timeText.setString(timeStr.substr(11, 8));
     //std::cout << timeStr.substr(11, 8) << "\n";
+}
 
-
+void Game::UpdateButtons()
+{
     //Updating UI Buttons!
 
     //this->timeButtonTest->UpdateButton((sf::Vector2f)sf::Mouse::getPosition(*this->window));

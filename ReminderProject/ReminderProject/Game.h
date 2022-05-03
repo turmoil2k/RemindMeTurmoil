@@ -72,6 +72,7 @@ public:
 	void Update();
 	void Render();
 	void UpdateTime();
+	void UpdateButtons();
 
 };
 
