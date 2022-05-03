@@ -12,6 +12,8 @@ Button::Button(float x, float y, float width, float height, sf::Color incNormalC
 	this->shape.setFillColor(this->normalColor);
 
 	this->currentButtonState = BTN_NORMAL;
+
+	extraToggle = false;
 }
 
 Button::~Button()
@@ -32,10 +34,14 @@ const bool Button::isButtonPressed() const
 	}
 }
 
+bool Button::Toggling()
+{
+	return extraToggle = !extraToggle;
+}
+
 //Functions
 
-
-void Button::UpdateButton(const sf::Vector2f mousePos)
+void Button::UpdateButton(const sf::Vector2f mousePos, bool isToggleButton)
 {
 	this->currentButtonState = BTN_NORMAL;
 
@@ -45,6 +51,10 @@ void Button::UpdateButton(const sf::Vector2f mousePos)
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
 			this->currentButtonState = BTN_CLICKED;
+			if (isToggleButton)
+			{
+				Toggling();
+			}
 		}
 	}
 

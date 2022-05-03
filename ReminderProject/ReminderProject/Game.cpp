@@ -158,7 +158,9 @@ void Game::PollEvents()
 
 
         case sf::Event::MouseButtonPressed:
+
             std::cout << "Mouse clicked!" << "\n";
+            this->timeButtonTest->UpdateButton(window->mapPixelToCoords(sf::Mouse::getPosition(*this->window)),true);
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 std::cout << "Mouse Left Click!" << "\n";
@@ -217,14 +219,18 @@ void Game::UpdateTime()
     //std::cout << timeStr.substr(11, 8) << "\n";
 
     //this->timeButtonTest->UpdateButton((sf::Vector2f)sf::Mouse::getPosition(*this->window));
+
     this->timeButtonTest->UpdateButton(window->mapPixelToCoords(sf::Mouse::getPosition(*this->window)));
 
-    if (timeButtonTest->isButtonPressed())
+    if (timeButtonTest->GetToggleState())
     {
-        buttonTestString = "12H";
+        buttonTestString = "12H MODE";
     }
     else
     {
-        buttonTestString = "24H";
+        buttonTestString = "24H MODE";
     }
+
+    std::cout << timeButtonTest->GetToggleState() << "\n";
+    std::cout << buttonTestString << "\n";
 }
