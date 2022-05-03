@@ -70,7 +70,7 @@ void Game::InitVariables()
     timeRect.setPosition((videoMode.width - 100), (videoMode.height / 2.25));
     timeRect.setFillColor(sf::Color::Cyan);
 
-    
+    timeButtonTest = new Button((videoMode.width - 100), (videoMode.height / 2.25) + 50, 25, 25, sf::Color(50,50,50,100),sf::Color(150,150,150,200), sf::Color(50, 255, 50, 255));
 }
 
 void Game::InitWindow(int initWidth, int initHeight,int fpsLimit)
@@ -191,6 +191,8 @@ void Game::Render()
 
     this->window->draw(titleText);
     this->window->draw(timeText);
+
+    timeButtonTest->RenderButton(window);
     
     this->window->display();
 }
@@ -202,5 +204,7 @@ void Game::UpdateTime()
     //printf("%s", str); //std::cout << str;
     timeStr = str;
     timeText.setString(timeStr.substr(11, 8));
-    std::cout << timeStr.substr(11, 8) << "\n";
+    //std::cout << timeStr.substr(11, 8) << "\n";
+
+    this->timeButtonTest->UpdateButton((sf::Vector2f)sf::Mouse::getPosition(*this->window));
 }

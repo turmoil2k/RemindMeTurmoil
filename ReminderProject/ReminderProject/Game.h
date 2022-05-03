@@ -7,6 +7,9 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
+
+#include "Button.h"
+
 //Wrapper class acting like a "Game Engine"
 
 class Game
@@ -36,6 +39,8 @@ private:
 
 	sf::CircleShape timeCircle;
 	sf::RectangleShape timeRect;
+
+	Button* timeButtonTest;
 
 
 	sf::Vector2i mousePos;
