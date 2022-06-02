@@ -213,11 +213,30 @@ void Game::Render()
 void Game::UpdateTime()
 {
     time_t result = time(NULL);
-    ctime_s(str, sizeof str, &result);
+    ctime_s(timeCharArr, sizeof timeCharArr, &result);
     //printf("%s", str); //std::cout << str;
-    timeStr = str;
-    timeText.setString(timeStr.substr(11, 8));
+    timeStr = timeCharArr;
+    timeText.setString(GetTime());
     //std::cout << timeStr.substr(11, 8) << "\n";
+}
+
+std::string Game::GetTime()
+{
+    //EVERYFRAME!!!
+    if (this->timeButtonTest->GetToggleState())
+    {
+        //CONVERT 24 HR TO 12 HR
+        buttonTestString = "12H MODE";
+        //Change timeStr here to 12 hr format it will keep changing every frame!
+
+        return timeStr;
+    }
+    else
+    {
+        //ALREADY 24 HR
+        buttonTestString = "24H MODE";
+        return timeStr = timeStr.substr(11, 8);
+    }
 }
 
 void Game::UpdateButtons()
@@ -228,15 +247,6 @@ void Game::UpdateButtons()
 
     this->timeButtonTest->UpdateButton(window->mapPixelToCoords(sf::Mouse::getPosition(*this->window)));
 
-    if (timeButtonTest->GetToggleState())
-    {
-        buttonTestString = "12H MODE";
-    }
-    else
-    {
-        buttonTestString = "24H MODE";
-    }
-
-    std::cout << timeButtonTest->GetToggleState() << "\n";
-    std::cout << buttonTestString << "\n";
+    //std::cout << timeButtonTest->GetToggleState() << "\n";
+    std::cout << buttonTestString  << " < BUTTON TEST 24H / 12 H  | TIME STRING VAR > " << timeStr << "\n";
 }

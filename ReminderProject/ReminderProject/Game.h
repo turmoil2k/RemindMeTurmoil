@@ -46,9 +46,10 @@ private:
 
 	sf::Vector2i mousePos;
 
-	char str[50];
+	char timeCharArr[50];
 	sf::Text timeText;
 	std::string timeStr;
+	int hourInt = 0;
 
 
 
@@ -73,6 +74,7 @@ public:
 	void Render();
 	void UpdateTime();
 	void UpdateButtons();
+	std::string GetTime();
 
 };
 
